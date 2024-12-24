@@ -1,0 +1,34 @@
+Hướng dẫn sử dụng 
+Mảng số nguyên:[1, -2, 3, -4, 5, -6, 7, 8]
+1>Tổng các số dương:
+Không có số dương trong mảng.
+Kết quả: Tổng số dương: 0
+2>Đếm số dương:
+Không có số dương trong mảng.
+Kết quả: Số lượng số dương: 0
+3>Tìm số nhỏ nhất:
+Số nhỏ nhất trong mảng: -10
+Kết quả: Số nhỏ nhất: -10
+4>Tìm số dương nhỏ nhất:
+Không có số dương trong mảng.
+Kết quả: Số dương nhỏ nhất: Không có số dương.
+5>Tìm số chẵn cuối cùng:
+Các số chẵn: [-10, -2]
+Số chẵn cuối: -2
+Kết quả: Số chẵn cuối: -2
+6>Đổi chỗ 2 giá trị (ví dụ: đổi chỉ số 1 và 4):
+Đổi giá trị tại chỉ số 1 và chỉ số 4: [-10, -2, -3, -7, -5]
+Kết quả: Mảng sau khi đổi chỗ: [-10, -2, -3, -7, -5]
+7>Sắp xếp mảng tăng dần:
+Mảng sau khi sắp xếp: [-10, -7, -5, -3, -2]
+Kết quả: Mảng tăng dần: [-10, -7, -5, -3, -2]
+8>Tìm số nguyên tố đầu tiên:
+Kiểm tra từng số: Số nguyên tố đầu tiên là -3 (không có số nguyên tố dương trong mảng này).
+Kết quả: Không có số nguyên tố trong mảng.
+9>Đếm số nguyên trong mảng số thực:
+Số nguyên trong mảng: 5 (tất cả các số đều là số nguyên).
+Kết quả: Số nguyên trong mảng: 5
+10>So sánh số lượng số dương và số âm:
+Số lượng số dương: 0
+Số lượng số âm: 5
+Kết quả: Có nhiều số âm hơn số dương.

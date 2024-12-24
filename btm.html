@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập mảng số nguyên</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #29c8f0;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-container input {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            background: #704caf;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card-container {
+            width: 80%;
+            max-width: 600px;
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+
+        .card {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+        }
+
+        .card button {
+            padding: 8px 15px;
+            background: #21c9f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .collapse-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .collapsed .result {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bài Tập Mảng Số Nguyên</h1>
+
+    <div class="input-container">
+        <input type="text" id="arrayInput" placeholder="Nhập các số nguyên, cách nhau bởi dấu phẩy">
+        <button onclick="submitArray()">Xác Nhận</button>
+    </div>
+
+    <div class="card-container">
+        <div class="card" id="card1">
+            <h3>1. Tổng các số dương</h3>
+            <button onclick="sumPositive()">Chạy</button>
+            <div class="result" id="result1"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card1')">Thu gọn</button>
+        </div>
+        <div class="card" id="card2">
+            <h3>2. Đếm số dương</h3>
+            <button onclick="countPositive()">Chạy</button>
+            <div class="result" id="result2"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card2')">Thu gọn</button>
+        </div>
+        <div class="card" id="card3">
+            <h3>3. Tìm số nhỏ nhất</h3>
+            <button onclick="findMin()">Chạy</button>
+            <div class="result" id="result3"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card3')">Thu gọn</button>
+        </div>
+        <div class="card" id="card4">
+            <h3>4. Tìm số dương nhỏ nhất</h3>
+            <button onclick="findMinPositive()">Chạy</button>
+            <div class="result" id="result4"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card4')">Thu gọn</button>
+        </div>
+        <div class="card" id="card5">
+            <h3>5. Tìm số chẵn cuối cùng</h3>
+            <button onclick="findLastEven()">Chạy</button>
+            <div class="result" id="result5"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card5')">Thu gọn</button>
+        </div>
+        <div class="card" id="card6">
+            <h3>6. Đổi chỗ 2 giá trị</h3>
+            <div>
+                <input type="number" id="index1" placeholder="Chỉ số 1" />
+                <input type="number" id="index2" placeholder="Chỉ số 2" />
+                <button onclick="swapValues()">Đổi chỗ</button>
+            </div>
+            <div class="result" id="result6"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card6')">Thu gọn</button>
+        </div>
+        <div class="card" id="card7">
+            <h3>7. Sắp xếp mảng tăng dần</h3>
+            <button onclick="sortArray()">Chạy</button>
+            <div class="result" id="result7"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card7')">Thu gọn</button>
+        </div>
+        <div class="card" id="card8">
+            <h3>8. Tìm số nguyên tố đầu tiên</h3>
+            <button onclick="findFirstPrime()">Chạy</button>
+            <div class="result" id="result8"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card8')">Thu gọn</button>
+        </div>
+        <div class="card" id="card9">
+            <h3>9. Đếm số nguyên trong mảng số thực</h3>
+            <button onclick="countIntegers()">Chạy</button>
+            <div class="result" id="result9"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card9')">Thu gọn</button>
+        </div>
+        <div class="card" id="card10">
+            <h3>10. So sánh số lượng số dương và âm</h3>
+            <button onclick="comparePositiveNegative()">Chạy</button>
+            <div class="result" id="result10"></div>
+            <button class="collapse-btn" onclick="toggleCollapse('card10')">Thu gọn</button>
+        </div>
+    </div>
+
+    <script>
+        let numbers = [];
+
+        function submitArray() {
+            const input = document.getElementById('arrayInput').value;
+            numbers = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+            alert('Mảng đã được lưu: ' + numbers.join(', '));
+        }
+
+        function sumPositive() {
+            const sum = numbers.filter(num => num > 0).reduce((acc, curr) => acc + curr, 0);
+            document.getElementById('result1').innerText = `Tổng số dương: ${sum}`;
+        }
+
+        function countPositive() {
+            const count = numbers.filter(num => num > 0).length;
+            document.getElementById('result2').innerText = `Số lượng số dương: ${count}`;
+        }
+
+        function findMin() {
+            const min = Math.min(...numbers);
+            document.getElementById('result3').innerText = `Số nhỏ nhất: ${min}`;
+        }
+
+        function findMinPositive() {
+            const positiveNumbers = numbers.filter(num => num > 0);
+            const minPositive = Math.min(...positiveNumbers);
+            document.getElementById('result4').innerText = `Số dương nhỏ nhất: ${minPositive}`;
+        }
+
+        function findLastEven() {
+            const lastEven = numbers.reverse().find(num => num % 2 === 0) || -1;
+            document.getElementById('result5').innerText = `Số chẵn cuối: ${lastEven}`;
+        }
+
+        function sortArray() {
+            const sorted = [...numbers].sort((a, b) => a - b);
+            document.getElementById('result7').innerText = `Mảng tăng dần: ${sorted.join(', ')}`;
+        }
+
+        function swapValues() {
+            const index1 = parseInt(document.getElementById('index1').value);
+            const index2 = parseInt(document.getElementById('index2').value);
+
+            if (isNaN(index1) || isNaN(index2)) {
+                document.getElementById('result6').innerText = "Vui lòng nhập chỉ số hợp lệ!";
+                return;
+            }
+
+            if (index1 >= 0 && index1 < numbers.length && index2 >= 0 && index2 < numbers.length) {
+                [numbers[index1], numbers[index2]] = [numbers[index2], numbers[index1]];
+                document.getElementById('result6').innerText = `Mảng sau khi đổi chỗ: ${numbers.join(', ')}`;
+            } else {
+                document.getElementById('result6').innerText = "Chỉ số không hợp lệ!";
+            }
+        }
+                function sortArray() {
+            const sorted = [...numbers].sort((a, b) => a - b);
+            document.getElementById('result7').innerText = `Mảng tăng dần: ${sorted.join(', ')}`;
+        }
+        function findFirstPrime() {
+            function isPrime(num) {
+                if (num < 2) return false;
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) return false;
+                }
+                return true;
+            }
+            const prime = numbers.find(num => isPrime(num));
+            if (prime !== undefined) {
+                document.getElementById('result8').innerText = `Số nguyên tố đầu tiên: ${prime}`;
+            } else {
+                document.getElementById('result8').innerText = "Không có số nguyên tố trong mảng.";
+            }
+        }
+        function countIntegers() {
+            const count = numbers.filter(num => Number.isInteger(num)).length;
+            document.getElementById('result9').innerText = `Số nguyên trong mảng: ${count}`;
+        }
+        function comparePositiveNegative() {
+            const positiveCount = numbers.filter(num => num > 0).length;
+            const negativeCount = numbers.filter(num => num < 0).length;
+            if (positiveCount > negativeCount) {
+                document.getElementById('result10').innerText = `Có nhiều số dương hơn số âm.`;
+            } else if (positiveCount < negativeCount) {
+                document.getElementById('result10').innerText = `Có nhiều số âm hơn số dương.`;
+            } else {
+                document.getElementById('result10').innerText = `Số lượng số dương và số âm bằng nhau.`;
+            }
+        }
+
+
+        function toggleCollapse(cardId) {
+            const card = document.getElementById(cardId);
+            const result = card.querySelector('.result');
+            if (card.classList.contains('collapsed')) {
+                card.classList.remove('collapsed');
+                result.style.display = 'block';
+            } else {
+                card.classList.add('collapsed');
+                result.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
